@@ -1,6 +1,8 @@
 ## Background
 
-This app performs kinetic modeling of deoxyhemoglobin (HHb) data obtained using near-infrared spectroscopy. The metrics that are calculated provide estimates of microvascular function during the transition from rest to exercise. Visit the working app here: https://timfulton.shinyapps.io/HHb_Analysis_App/
+This app performs kinetic modeling of deoxyhemoglobin (HHb) data obtained using near-infrared spectroscopy. The metrics that are calculated provide estimates of microvascular function during the transition from rest to exercise. 
+
+Visit the working app here: https://timfulton.shinyapps.io/HHb_Analysis_App/
 
 ## Methods
 
