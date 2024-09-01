@@ -1,4 +1,4 @@
-# Utils script that loads packages and containts the data processing function
+# Utils script that loads packages and contains the data processing function
 
 # Load packages
 library(shiny)
