@@ -1,4 +1,6 @@
-# Load pacakges
+# Utils script that loads packages and containts the data processing function
+
+# Load packages
 library(shiny)
 library(shinydashboard)
 library(shinyWidgets)
@@ -19,7 +21,7 @@ load_and_process_data <- function(file_path) {
 
   df <- read_excel(file_path, col_names = TRUE)
   
-  # updates names in case the template is wrong
+  # update names in case the template is wrong
   colnames(df) <- c("time", "hhb")
   
   # subset data frame and create new column for normalized data
@@ -27,7 +29,6 @@ load_and_process_data <- function(file_path) {
     drop_na() %>% 
     mutate(hhb = round(hhb, 2),
            hhb_normal = hhb - round(mean(hhb[1:10]), 2))
-  
   
   # Return the processed data frame
   return(df)

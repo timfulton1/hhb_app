@@ -1,7 +1,10 @@
+# HHb Kinetics Analysis App
 # Built by Tim Fulton, June 1, 2024
 
+# Load helper file
 source("utils.R")
 
+# Load demo data
 demo_data <- read_excel("data/hhb_demo_data.xlsx", col_names = TRUE)
 
 # Define UI ----
@@ -38,7 +41,7 @@ ui <- page_fillable(
             The timespan of the data used will range from the first fitting point to 60 seconds. <br>
             <br>
             <strong>Usage</strong> <br>
-            Data can be uploaded using the browse button (visitors can use the demo data). The first fitting point defaults to 6 seconds, but it should be adjusted to the first data point after time zero (exercise start) that is higher than the baseline. The first fitting point can be adjusted using the slider on the right."),  
+           Upload data using the browse button (visitors can use the demo data). The first fitting point defaults to 6 seconds, but it should be adjusted to the first data point after time zero (exercise start) that is higher than the baseline. The first fitting point can be adjusted using the slider on the right."),  
           title = "Instructions"),
       fileInput(inputId = "upload", label = NULL, placeholder = "Upload Excel",  multiple = FALSE, accept = ".xlsx", width = 400),
       actionButton(inputId = "load_demo", label = "Load demo data", width = 190, gap = 15),
@@ -84,23 +87,22 @@ ui <- page_fillable(
 # Define Server ----
 server <- function(input, output) {
   
-  # Define a reactive value to store the selected dataset
+  # Create a reactive value to store the selected data
   selected_df <- reactiveVal(NULL)
   
-  # Load the uploaded or demo dataset based on user action
+  # Load the uploaded or demo data based on the user action
   observeEvent(input$upload, {
     req(input$upload)
     selected_df(input$upload$datapath)
   })
   
   observeEvent(input$load_demo, {
-    selected_df("data/hhb_demo_data.xlsx")  # Assuming demo_df contains your demo dataset
+    selected_df("data/hhb_demo_data.xlsx")  
   })
   
   # Clean the selected data frame
   upload_df <- reactive({
     req(selected_df())
-    # Perform any necessary cleaning/transformation on the selected dataset
     load_and_process_data(selected_df())
   })
 
@@ -116,7 +118,7 @@ server <- function(input, output) {
       need(hhb_data$hhb_normal[which(hhb_data$time == input$time_start)] > 0, "Please select a time point higher than the baseline")
     )
     
-    ## Model Fitting ##
+    ## Model Fitting  ##
     # average of baseline values
     hhb_baseline = round((mean(hhb_data$hhb[1:10])), 2)
     
@@ -143,7 +145,7 @@ server <- function(input, output) {
     # new data frame for graphing
     kinetic_fit_df <- data.frame("time" = seq(hhb_time_delay, 60, by=0.1))
     
-    # add model values to DF
+    # add model values to df
     kinetic_fit_df$model_fit <- round(hhb_baseline + fit_delta *(1-exp(-((kinetic_fit_df$time-hhb_time_delay)/fit_tau))), 2)
     
     # update the column names
@@ -176,12 +178,12 @@ server <- function(input, output) {
     metrics_df <- data.frame(Variable = c("Baseline", "Delta", "Amplitude", "Time Delay", "Tau", "Response Time", "Overshoot", "RMSE"), 
                                       Value =  as.numeric(c(hhb_baseline, fit_delta, hhb_max, hhb_time_delay, fit_tau, hhb_response_time, hhb_overshoot, hhb_rmse)))
     
-    ## Output final data
+    ## Output final data ##
     final_data <- list(kinetic_fit_df, hhb_residuals, metrics_df)
     
   })
   
-  ## Render the plot with raw data and kinetic fit data
+  # Render the plot with raw data and kinetic fit data
   output$model_plot <- renderPlotly({
     
     temp_data <- upload_df()
@@ -193,9 +195,7 @@ server <- function(input, output) {
     ggplotly(
       ggplot(data = temp_data, mapping = aes(x = Time, y = HHb)) +
         theme_pubr() +
-        #theme(panel.grid.major.y = element_line(color = "gray", linetype = "dotted")) + 
         labs(
-          #title = "Raw Data and Model Fit",
           x = "Time (s)",
           y = "HHb (% physiological range)"
         ) +
@@ -219,7 +219,7 @@ server <- function(input, output) {
   })
   
   
-  ## Render the plot with raw data and kinetic fit data
+  # Render the plot with raw data and kinetic fit data
   output$residual_plot <- renderPlotly({
     
     # assign residual data to new data frame
@@ -254,7 +254,7 @@ server <- function(input, output) {
   })
   
   
-  ## Render table for metrics
+  # Render table for metrics
   output$metrics_table <- renderTable(
     final_data()[[3]],
     hover = TRUE,
@@ -262,7 +262,7 @@ server <- function(input, output) {
   )
   
   
-  ## Render table for HHb and Model
+  # Render table for HHb and Model
   output$overall_table <- renderTable({
     data <- final_data()[[2]]
     # Convert the first column to integers
@@ -271,7 +271,7 @@ server <- function(input, output) {
   }, hover = TRUE, align = c("rccc"))
   
   
-  ## Output Raw and Model Fit Table for Download ##
+  # Output Raw and Model Fit Table for Download
   output$export_model_data <- downloadHandler(
     
     filename = function() {
