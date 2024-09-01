@@ -122,7 +122,7 @@ server <- function(input, output) {
     # average of baseline values
     hhb_baseline = round((mean(hhb_data$hhb[1:10])), 2)
     
-    # subset to only include positive exercise HHb values
+    # subset to only include positive HHb values during exercise (after time 0)
     hhb_model_df <- hhb_data %>% 
       filter(hhb_normal > 0 & time >= input$time_start & time < 63)
     
