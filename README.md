@@ -1,10 +1,16 @@
-## Background
+# Deoxyhemoglobin Kinetics Analysis App
 
-This app performs kinetic modeling of deoxyhemoglobin (HHb) data obtained using near-infrared spectroscopy. The metrics that are calculated provide estimates of microvascular function during the transition from rest to exercise. 
+This repo contains the code used to build the analysis application. Visit the app here: https://timfulton.shinyapps.io/HHb_Analysis_App/
 
-Visit the app here: https://timfulton.shinyapps.io/HHb_Analysis_App/
+<img width="1774" alt="HHB App" src="https://github.com/user-attachments/assets/4c7b4202-6d11-4eef-a75e-54e0ca8ef003">
 
-## Methods
+### Background
+
+The app performs kinetic modeling of deoxyhemoglobin (HHb) data obtained using near-infrared spectroscopy. The metrics that are calculated provide estimates of microvascular function during the transition from rest to exercise. 
+
+
+
+### Methods
 
 The data are fit using a monoexponential model with a time delay according to the equation below:
 
