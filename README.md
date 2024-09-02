@@ -6,8 +6,7 @@ This repo contains the code used to build the analysis application. Visit the ap
 
 ### Background
 
-The app performs kinetic modeling of deoxyhemoglobin (HHb) data obtained using near-infrared spectroscopy. The metrics that are calculated provide estimates of microvascular function during the transition from rest to exercise. 
-
+I developed this application during my postdoctoral fellowship to enhance the efficiency and accuracy of deoxyhemoglobin (HHb) kinetics analyses. The app performs kinetic modeling of HHb data obtained using near-infrared spectroscopy. The metrics that are calculated provide estimates of microvascular function during the transition from rest to exercise. 
 
 
 ### Methods
