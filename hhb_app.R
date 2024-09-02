@@ -1,5 +1,6 @@
 # HHb Kinetics Analysis App
-# Built by Tim Fulton, June 1, 2024
+# Built by Tim Fulton, Feb 2022
+# Updated by Tim Fulton, June 2024
 
 # Load helper file
 source("utils.R")
