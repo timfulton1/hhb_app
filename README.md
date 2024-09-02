@@ -1,4 +1,4 @@
-# Deoxyhemoglobin Kinetics Analysis App
+# Deoxyhemoglobin Kinetics Analysis Application
 
 This repo contains the code used to build the analysis application. Visit the app here: https://timfulton.shinyapps.io/HHb_Analysis_App/
 
