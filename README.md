@@ -2,6 +2,9 @@
 
 This repo contains the code used to build the analysis application.
 
+![Screen Recording 2024-09-06 at 5 29 16 PM-2](https://github.com/user-attachments/assets/d57c5589-5fc1-4429-a0d8-5ca259541f02)
+
+
 <img width="1774" alt="HHB App" src="https://github.com/user-attachments/assets/4c7b4202-6d11-4eef-a75e-54e0ca8ef003">
 
 ### Background
