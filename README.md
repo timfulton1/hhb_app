@@ -4,7 +4,6 @@ This repo contains the code used to build the analysis application.
 
 Visit the app here: https://timfulton.shinyapps.io/HHb_Analysis_App/
 
-The app is optimized for Safari, Firefox, and Chrome, but may render slightly differently in each browser if using Windows OS.
 
 <img width="1774" alt="HHB App" src="https://github.com/user-attachments/assets/4c7b4202-6d11-4eef-a75e-54e0ca8ef003">
 
