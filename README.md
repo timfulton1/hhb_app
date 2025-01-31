@@ -30,6 +30,6 @@ Three additional variables that are calculated are:
 
 The timespan of the data used will range from the first fitting point to 60 seconds.
 
-## Usage
+### Usage
 
 Upload data using the browse button (visitors can use the demo data). The first fitting point defaults to 6 seconds, but it should be adjusted to the first data point after time zero (exercise start) that is higher than the baseline. The first fitting point can be adjusted using the slider on the right.
